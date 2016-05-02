@@ -4,7 +4,7 @@
 
 ## CSS image replacement
 
-```css
+```less
 .text-hide() {
   font: ~"0/0" a;
   color: transparent;
@@ -16,7 +16,7 @@
 
 ## Opacity
 
-```css
+```less
 .opacity(@opacity) {
   opacity: @opacity;
   // IE8 filter
@@ -29,7 +29,7 @@
 
 Keep images from scaling beyond the width of their parents.
 
-```css
+```less
 .img-responsive(@display: block) {
   display: @display;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
@@ -41,7 +41,7 @@ Keep images from scaling beyond the width of their parents.
 
 Short retina mixin for setting background-image and -size. Note that the spelling of `min--moz-device-pixel-ratio` is intentional.
 
-```css
+```less
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
 
@@ -60,7 +60,7 @@ Short retina mixin for setting background-image and -size. Note that the spellin
 
 ## Labels
 
-```css
+```less
 .label-variant(@color) {
   background-color: @color;
 
@@ -77,7 +77,7 @@ Short retina mixin for setting background-image and -size. Note that the spellin
 
 When you need to remove a gradient background, do not forget to use this to reset the IE filter for IE9 and below.
 
-```css
+```less
 .reset-filter() {
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }
@@ -85,7 +85,7 @@ When you need to remove a gradient background, do not forget to use this to rese
 
 ## Resize anything
 
-```css
+```less
 .resizable(@direction) {
   resize: @direction; // Options: horizontal, vertical, both
   overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
@@ -96,7 +96,7 @@ When you need to remove a gradient background, do not forget to use this to rese
 
 More easily include all the states for responsive-utilities.less.
 
-```css
+```less
 .responsive-visibility() {
   display: block !important;
   table&  { display: table !important; }
@@ -112,7 +112,7 @@ More easily include all the states for responsive-utilities.less.
 
 ## Sizing shortcuts
 
-```css
+```less
 .size(@width; @height) {
   width: @width;
   height: @height;
@@ -125,7 +125,7 @@ More easily include all the states for responsive-utilities.less.
 
 ## WebKit-style focus
 
-```css
+```less
 .tab-focus() {
   // Default
   outline: thin dotted;
@@ -137,7 +137,7 @@ More easily include all the states for responsive-utilities.less.
 
 ## Remove styles from text
 
-```css
+```less
 .reset-text() {
   font-family: @font-family-base;
   // We deliberately do NOT reset font-size.
@@ -160,7 +160,7 @@ More easily include all the states for responsive-utilities.less.
 
 ## Typography
 
-```css
+```less
 .text-emphasis-variant(@color) {
   color: @color;
   a&:hover,
@@ -174,7 +174,7 @@ More easily include all the states for responsive-utilities.less.
 
 Requires inline-block or block for proper styling
 
-```css
+```less
 .text-overflow() {
   overflow: hidden;
   text-overflow: ellipsis;
