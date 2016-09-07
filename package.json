@@ -1,22 +1,21 @@
 {
   "name": "starterkit",
-  "description": "CVAM's starter kit",
+  "description": "CVAM's frontend style guide",
   "version": "0.1.0",
   "homepage": "",
   "author": "CVAM",
   "repository": {
     "type": "git",
-    "url": "https://github.com/convistaalmar/starterkit.git"
+    "url": "https://github.com/convistaalmar/frontend-style-guide.git"
   },
   "bugs": {
-    "url": "https://github.com/convistaalmar/starterkit/issues"
+    "url": "https://github.com/convistaalmar/frontend-style-guide/issues"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-stylist": "~0.1.6",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-myth": "~0.1.1",
     "grunt-contrib-less": "~0.10.0",
-    "grunt-banner": "~0.2.2"
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-html-build": "^0.5.3",
+    "grunt-inline": "^0.3.6"
   }
 }

@@ -45,7 +45,7 @@ C:\path_to_project\grunt -h
 To make Grunt to watch for changes in your development files, type:
 ```
 C:\path_to_project\grunt watch
-```
+``
 
 To learn more about Grunt, cheack the [Getting Started](http://gruntjs.com/getting-started) guide. 
 
@@ -53,24 +53,26 @@ To learn more about Grunt, cheack the [Getting Started](http://gruntjs.com/getti
 
 The porpouse of each directory is:
 ```
-/css
-    inline.css
-    screen.css
-    screen-small.css
-    screen-medium.css
-
+/assets
+    /css
+        inline.css
+        base.css
+        scaffolding.css
+        print.css
+    /img
+    /js
 /doc
-/img
-/js
 /less
     inline.less
-    screen.less
-    screen-small.less
-    screen-medium.less
+    base.less
+    scaffolding.less
     print.less
+    /lib
     /components
         /navbar.less
-/lib
+    /layouts
+        /home.less
+/vendor
     /bootstrap
 ```
 
