@@ -1,0 +1,22 @@
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+
+.table-hover() {
+  > tbody > tr:hover {
+    background-color: @table-bg-hover;
+  }
+
+  // Table backgrounds
+  //
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+
+  // Generate the contextual variants
+  .table-hover-row-variant(active; @table-bg-active);
+  .table-hover-row-variant(success; @state-success-bg);
+  .table-hover-row-variant(info; @state-info-bg);
+  .table-hover-row-variant(warning; @state-warning-bg);
+  .table-hover-row-variant(danger; @state-danger-bg);
+
+}

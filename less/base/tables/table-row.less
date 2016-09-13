@@ -1,0 +1,22 @@
+// Tables
+
+.table-row-variant(@state; @background) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  & > thead > tr,
+  & > tbody > tr,
+  & > tfoot > tr {
+    > td.@{state},
+    > th.@{state} {
+      background-color: @background;
+    }
+  }
+  & > thead > tr.@{state},
+  & > tbody > tr.@{state},
+  & > tfoot > tr.@{state} {
+    > td,
+    > th {
+      background-color: @background;
+    }
+  }
+}

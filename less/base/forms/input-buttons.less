@@ -1,0 +1,84 @@
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+.input-buttons-element() {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px \9;
+
+  // Apply same disabled cursor tweak as for inputs
+  // Some special care is needed because <label>s don't inherit their parent's `cursor`.
+  //
+  // Note: Neither radios nor checkboxes can be readonly.
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+  }
+}
+.input-buttons(@input-type) {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  label {
+    min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  input[type="@{input-type}"] {
+    .input-buttons-element();
+  }
+  & + .@{input-type} {
+    margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+  }
+
+  // These classes are used on elements with <label> descendants
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: @cursor-disabled;
+    }
+  }
+}
+
+.input-buttons-inline(@input-type) {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+  input[type="@{input-type}"] {
+    .input-buttons-element();
+  }
+  & + .@{input-type}-inline {
+    margin-top: 0;
+    margin-left: 10px; // space out consecutive inline controls
+  }
+  // These classes are used directly on <label>s
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+  }
+}
+
+.radio() {
+  .input-buttons(radio);
+}
+.checkbox() {
+  .input-buttons(checkbox);
+}
+
+// Radios and checkboxes on same line
+.radio-inline() {
+  .input-buttons-inline(radio);
+}
+.checkbox-inline() {
+  .input-buttons-inline(checkbox);
+}
+

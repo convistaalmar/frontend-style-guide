@@ -1,0 +1,13 @@
+// Block button
+// --------------------------------------------------
+
+.button-block(@button-block-class:btn-block) {
+  display: block;
+  width: 100% !important; // specifity override
+
+  // Vertically space out multiple block buttons
+  & + .@{button-block-class} {
+    margin-top: 5px;
+  }
+
+}

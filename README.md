@@ -49,7 +49,7 @@ C:\path_to_project\grunt watch
 
 To learn more about Grunt, cheack the [Getting Started](http://gruntjs.com/getting-started) guide. 
 
-## Directory structure
+## Getting started
 
 The porpouse of each directory is:
 ```
