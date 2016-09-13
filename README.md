@@ -1,5 +1,5 @@
-Starter Kit
-===========
+CVAM's Frontend style guide
+===========================
 
 A set of development tools to start a project. 
 
@@ -30,7 +30,7 @@ Now you to have two commands available to run through the command line from any 
 * The `npm` command  to download and install [Node Package Modules](https://www.npmjs.org/)
 * The `grunt` command to run tasks through your workflow.
 
-Copy the starter kit files to your project directory. Then, browse to it using the command line and type:
+Copy the files to your project's directory. Then, browse to it using the command line and type:
 ```
 C:\path_to_project\npm install
 ```
@@ -45,35 +45,10 @@ C:\path_to_project\grunt -h
 To make Grunt to watch for changes in your development files, type:
 ```
 C:\path_to_project\grunt watch
-``
+```
 
 To learn more about Grunt, cheack the [Getting Started](http://gruntjs.com/getting-started) guide. 
 
-## Getting started
+## What's next
 
-The porpouse of each directory is:
-```
-/assets
-    /css
-        inline.css
-        base.css
-        scaffolding.css
-        print.css
-    /img
-    /js
-/doc
-/less
-    inline.less
-    base.less
-    scaffolding.less
-    print.less
-    /lib
-    /components
-        /navbar.less
-    /layouts
-        /home.less
-/vendor
-    /bootstrap
-```
-
-
+Check the [documentation](doc/TOC.md) to start using mixins and write components for your application.
