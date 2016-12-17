@@ -13,7 +13,7 @@ This guide is intended to give you a reference about the tools used through the 
 
 ## Development Environment
 
-If you don't have Grunt installed, you will need:
+If you haven't used Grunt before, you need to:
 * Download an install [Node.js](http://nodejs.org/download/) in your computer. 
 * Install the [Grunt's command line interface (CLI)](http://gruntjs.com/getting-started#installing-the-cli) globally:
 ```
@@ -50,12 +50,17 @@ grunt watch
 
 To generate the all assets in one step, type:
 ```
-grunt dev
+grunt update
 ```
 
-Finally, to generate the final assets **before to commit**, type:
+To generate and lint the assets **before to commit**, type:
 ```
 grunt commit
+```
+
+To generate the final assets for release, type:
+```
+grunt release
 ```
 
 ### Development Workflow

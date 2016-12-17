@@ -8,14 +8,16 @@
 module.exports = function(grunt) {
   'use strict';
 
+  var project = grunt.file.readJSON('project.json');
+
   // Force use of Unix newlines
   grunt.util.linefeed = '\n';
 
   // Project configuration
   grunt.initConfig({
 
-    // 
-    project: grunt.file.readJSON('project.json'),
+    // Get project config
+    project: project,
 
     // Task configuration
 
@@ -55,7 +57,21 @@ module.exports = function(grunt) {
       options: {
         csslintrc: '<%= project.src_path %>less/.csslintrc'
       },
-      src: ['<%= project.dest_path %>css/*.css']
+      src: ['<%= project.dest_path %>css/*.css', '!<%= project.dest_path %>css/*.min.css']
+    },
+
+    // CSS minification
+    // Docs: https://github.com/gruntjs/grunt-contrib-cssmin
+    cssmin: {
+      options: {
+        shorthandCompacting: false,
+        roundingPrecision: -1
+      },
+      target: {
+        files: {
+          '<%= project.dest_path %>css/styles.min.css': '<%= project.dest_path %>css/styles.css'
+        }
+      }
     },
 
     // Concat JS
@@ -83,6 +99,33 @@ module.exports = function(grunt) {
       afterconcat: ['<%= project.dest_path %>js/plugins.js', '<%= project.dest_path %>js/main.js']
     },
 
+    // Uglify JS
+    // Docs: https://github.com/gruntjs/grunt-contrib-uglify
+    // TODO!
+    uglify: {
+      default: {
+        files: {
+          '<%= project.dest_path %>js/plugins.min.js': '<%= project.dest_path %>js/plugins.js', 
+          '<%= project.dest_path %>js/main.min.js': '<%= project.dest_path %>js/main.js'
+        }
+      }
+    },
+
+    // Copy vendor scripts
+    // Docs: https://github.com/gruntjs/grunt-contrib-copy
+    copy: {
+      jquery: {
+        expand: true,
+        cwd: '<%= project.vendor_path.jquery.src %>',
+        src: '*',
+        dest: '<%= project.vendor_path.jquery.dest %>',
+      },
+      modernizr: {
+        src: '<%= project.vendor_path.modernizr.src %>modernizr.js',
+        dest: '<%= project.vendor_path.modernizr.dest %>modernizr.js'
+      }
+    },
+
     // Create symbols definition
     // Docs: https://github.com/FWeinb/grunt-svgstore
     svgstore: {
@@ -104,27 +147,14 @@ module.exports = function(grunt) {
         }
     },
 
-    // Copy vendor scripts
-    // Docs: https://github.com/gruntjs/grunt-contrib-copy
-    copy: {
-      jquery: {
-        src: '<%= project.vendor_path.jquery.src %>',
-        dest: '<%= project.vendor_path.jquery.dest %>'
-      },
-      modernizr: {
-        src: '<%= project.vendor_path.modernizr.src %>',
-        dest: '<%= project.vendor_path.modernizr.dest %>'
-      }
-    },
-
     // Static HTML build
     // Docs: https://github.com/spatools/grunt-html-build
     htmlbuild: {
         options: {
           scripts: {
-            head: '<%= project.vendor_path.modernizr.dest %>',
+            head: '<%= project.vendor_path.modernizr.dest %>modernizr.js',
             body: [
-              '<%= project.vendor_path.jquery.dest %>',
+              '<%= project.vendor_path.jquery.dest %>jquery.js',
               '<%= project.dest_path %>js/plugins.js',
               '<%= project.dest_path %>js/main.js'
             ]
@@ -160,6 +190,44 @@ module.exports = function(grunt) {
         },
         src: '<%= project.src_path %>samples/*.html',
         dest: '<%= project.html_path %>samples/',
+      },
+      release: {
+        options: {
+          styles: {
+            styles: '<%= project.dest_path %>css/styles.min.css'
+          },
+          scripts: {
+            head: '<%= project.vendor_path.modernizr.dest %>modernizr.js',
+            body: [
+              '<%= project.vendor_path.jquery.dest %>jquery.min.js',
+              '<%= project.dest_path %>js/plugins.min.js',
+              '<%= project.dest_path %>js/main.min.js'
+            ]
+          }
+        },
+        src: '<%= project.src_path %>pages/*.html',
+        dest: '<%= project.html_path %>',
+      }
+    },
+
+    // HTML minify
+    // Docs: https://github.com/gruntjs/grunt-contrib-htmlmin
+    // TODO!
+    htmlmin: {
+      default: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: (function (path) {
+          var result = {};
+          grunt.file.recurse(path, function callback(abspath, rootdir, subdir, filename) {
+            if (filename.indexOf('.html') > 0 && subdir != 'samples') {
+              result[abspath] = abspath;
+            }
+          });
+          return result;
+        })(project.html_path)
       }
     },
 
@@ -202,6 +270,14 @@ module.exports = function(grunt) {
                 '<%= project.src_path %>less/**/**/*.less'], 
         tasks: ['less']
       }
+    },
+
+    htmllint: {
+      default: {
+        options: {
+        },
+        src: ['<%= project.html_path %>*.html', '<%= project.html_path %>**/*.html']
+      }
     }
 
   });
@@ -209,16 +285,24 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-html-build');
   grunt.loadNpmTasks('grunt-svgstore');
+  grunt.loadNpmTasks('grunt-html-build');
+  grunt.loadNpmTasks('grunt-html');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('dev', ['svgstore', 'concat', 'less', 'htmlbuild']);
-  grunt.registerTask('vendor', ['copy']);
+  grunt.registerTask('htmlbuild:development', ['htmlbuild:default', 'htmlbuild:samples']);
 
-  grunt.registerTask('commit', ['svgstore', 'jshint:beforeconcat', 'concat', 'jshint:afterconcat', 'less', 'autoprefixer', 'csslint', 'htmlbuild']);
+  grunt.registerTask('update:vendor', ['copy']);
+  grunt.registerTask('update:assets', ['less', 'concat', 'svgstore', 'htmlbuild:development']);
+
+  grunt.registerTask('update', ['update:vendor', 'update:assets']);
+  grunt.registerTask('commit', ['less', 'autoprefixer', 'csslint', 'jshint:beforeconcat', 'concat', 'jshint:afterconcat', 'svgstore', 'htmlbuild:development', 'htmllint']);
+  grunt.registerTask('release', ['less', 'autoprefixer', 'csslint', 'cssmin', 'jshint:beforeconcat', 'concat', 'jshint:afterconcat', 'uglify', 'svgstore', 'htmlbuild:release', 'htmlmin']);
 
 }; // wrapper
