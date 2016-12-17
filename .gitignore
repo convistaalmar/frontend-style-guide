@@ -1,2 +1,7 @@
 /node_modules
 /project.json
+/public/samples/*.html
+/public/assets/css/*.css
+/public/assets/js/*.js
+/public/assets/svg/*.svg
+/public/*.html
