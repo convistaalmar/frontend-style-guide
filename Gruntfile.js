@@ -124,7 +124,7 @@ module.exports = function(grunt) {
           scripts: {
             head: '<%= project.assets_path %>js/vendor/modernizr.js',
             body: [
-              '<%= project.assets_path %>js/vendor/jquery-1.12.4.js',
+              '<%= project.assets_path %>js/vendor/jquery.js',
               '<%= project.assets_path %>js/plugins.js',
               '<%= project.assets_path %>js/main.js'
             ]
