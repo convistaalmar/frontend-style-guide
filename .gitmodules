@@ -1,0 +1,12 @@
+[submodule "src/vendor/modernizr"]
+	path = src/vendor/modernizr
+	url = https://github.com/Modernizr/Modernizr.git
+[submodule "src/vendor/html5-boilerplate"]
+	path = src/vendor/html5-boilerplate
+	url = https://github.com/h5bp/html5-boilerplate.git
+[submodule "src/vendor/bootstrap"]
+	path = src/vendor/bootstrap
+	url = https://github.com/twbs/bootstrap.git
+[submodule "src/vendor/jquery"]
+	path = src/vendor/jquery
+	url = https://github.com/jquery/jquery.git

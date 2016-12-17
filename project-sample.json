@@ -1,14 +1,25 @@
 {
-  "title": "",
+  "lang": "en",
+  "title": "Frontend Style Guide",
   // if the project is at the host root, 
   // leave only the trailing slash
   "path": "/path_to_project/",
   // these path are relative to project root, 
   // with trailing slash mandatory
-  "sources_path": "path_to_sources/",
-  "assets_path": "path_to_assets/",
-  "html_path": "path_to_html/",
-  "content_path": "path_to_content/"
+  "sources_path": "src/",
+  "assets_path": "assets/",
+  "html_path": "assets/html/",
+  "content_path": "public/",
+  "vendor_path": {
+    "jquery": {
+      "src": "src/vendor/jquery/dist/jquery.js",
+      "dest": "assets/js/vendor/jquery.js"
+    },
+    "modernizr": {
+      "src": "src/vendor/modernizr/modernizr.js",
+      "dest": "assets/js/vendor/modernizr.js"
+    }
+  }
 }
 
 /* REMOVE ALL COMMENTS AFTER EDIT THIS FILE */

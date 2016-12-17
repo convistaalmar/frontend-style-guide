@@ -4,7 +4,7 @@ CVAM's Frontend style guide
 A set of development tools to build a style guide for your application's user interface. 
 
 * Based on [HTML5 Boilerplate](http://html5boilerplate.com/) and [Bootstrap](http://getbootstrap.com/)
-* Include [jQuery](http://jquery.com/) and [Modernizr](http://modernizr.)
+* Include [jQuery](http://jquery.com/) and [Modernizr](http://modernizr.com/)
 * And take advantage of [Grunt](http://gruntjs.com/) to automate some tasks
 
 ## Getting started
@@ -30,13 +30,13 @@ To learn more about tasks config, please check the [Grunt's Getting Started](htt
 
 ## Project setup
 
-Copy the package files to your project's directory. Then, open a system console, navigate to the project root and run:
+Clone the repository in your project's directory. Then, open a system console, navigate to the project root and run:
 
 ```
 npm install
 ```
 
-This will download and install all the Grunt's dependencies. Before to start, setup the path to your project's folder by copying the file `project-sample.json` as `project.json`.
+This will download and install all dependencies. When the installing is finished, setup the paths for your project's folders by copying the file `project-sample.json` as `project.json`. Then, you are ready to start using Grunt.
 
 To see a list of available options and tasks type:
 ```
@@ -81,3 +81,8 @@ Follow these steps for proper coding workflow:
 * To add UI icons, drop a single file for each one in `src//icons` and use them with `SVG`'s `<use>` tag ([read this article to learn more](https://css-tricks.com/svg-sprites-use-better-icon-fonts/))
 * To add custom scripts, create a single file for each interaction or component in `src//scripts`
 * To add external plugins, drop a single file in `src//plugins` (remember to add all plugin metadata like version, repository uri, etc. at the top of it)
+
+### Vendor libraries
+
+* Bootstrap and HTML5Boilerplate are included for reference: you can copy and paste files or code snippets from them to your apropiate sources
+* jQuery and Modernizr can be automatically updated by switching the submodule's working copy to the latest release's tag 

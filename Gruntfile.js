@@ -104,12 +104,25 @@ module.exports = function(grunt) {
         }
     },
 
+    // Copy vendor scripts
+    // Docs: https://github.com/gruntjs/grunt-contrib-copy
+    copy: {
+      jquery: {
+        src: '<%= project.vendor_path.jquery.src %>',
+        dest: '<%= project.vendor_path.jquery.dest %>'
+      },
+      modernizr: {
+        src: '<%= project.vendor_path.modernizr.src %>',
+        dest: '<%= project.vendor_path.modernizr.dest %>'
+      }
+    },
+
     // Static HTML build
     // Docs: https://github.com/spatools/grunt-html-build
     htmlbuild: {
         options: {
           scripts: {
-            head: '<%= project.assets_path %>js/vendor/modernizr-3.3.1-custom.js',
+            head: '<%= project.assets_path %>js/vendor/modernizr.js',
             body: [
               '<%= project.assets_path %>js/vendor/jquery-1.12.4.js',
               '<%= project.assets_path %>js/plugins.js',
@@ -154,6 +167,14 @@ module.exports = function(grunt) {
     // Watch tasks
     // Docs: https://www.npmjs.org/package/grunt-contrib-watch
     watch: {
+      jquery: {
+        files: ['<%= project.vendor_path.jquery.src %>'],
+        tasks: ['copy:jquery']
+      },
+      modernizr: {
+        files: ['<%= project.vendor_path.modernizr.src %>'],
+        tasks: ['copy:modernizr']
+      },
       svg: {
         files: ['<%= project.sources_path %>icons/*.svg'],
         tasks: ['svgstore']
@@ -193,6 +214,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-html-build');
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-contrib-watch');
