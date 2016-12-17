@@ -5,3 +5,4 @@
 /public/assets/js/*.js
 /public/assets/svg/*.svg
 /public/*.html
+/public/assets/js/vendor/*.js
