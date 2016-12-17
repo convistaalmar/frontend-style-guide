@@ -1,9 +1,10 @@
 {
-  "name": "starterkit",
+  "name": "frontend-style-guide",
   "description": "CVAM's frontend style guide",
   "version": "0.1.0",
-  "homepage": "",
-  "author": "CVAM",
+  "homepage": "http://convistaalmar.com.ar/",
+  "author": "Properati/Con Vista Al Mar",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "https://github.com/convistaalmar/frontend-style-guide.git"
@@ -13,9 +14,17 @@
   },
   "devDependencies": {
     "grunt": "~0.4.2",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-htmlmin": "^2.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-less": "~0.10.0",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-html-build": "^0.5.3",
-    "grunt-inline": "^0.3.6"
+    "grunt-inline": "^0.3.6",
+    "grunt-svgstore": "^1.0.0"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "title": "",
+  // if the project is at the host root, 
+  // leave only the trailing slash
+  "path": "/path_to_project/",
+  // these path are relative to project root, 
+  // with trailing slash mandatory
+  "sources_path": "path_to_sources/",
+  "assets_path": "path_to_assets/",
+  "html_path": "path_to_html/",
+  "content_path": "path_to_content/"
+}
+
+/* REMOVE ALL COMMENTS AFTER EDIT THIS FILE */
