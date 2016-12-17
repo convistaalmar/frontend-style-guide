@@ -86,3 +86,7 @@ Follow these steps for proper coding workflow:
 
 * Bootstrap and HTML5Boilerplate are included for reference: you can copy and paste files or code snippets from them to your apropiate sources
 * jQuery and Modernizr can be automatically updated by switching the submodule's working copy to the latest release's tag 
+
+## TO-DO
+
+* Complete documentation and samples
