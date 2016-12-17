@@ -6,18 +6,18 @@
   "path": "/path_to_project/",
   // these path are relative to project root, 
   // with trailing slash mandatory
-  "sources_path": "src/",
-  "assets_path": "assets/",
-  "html_path": "assets/html/",
-  "content_path": "public/",
+  "src_path": "assets/",
+  "dest_path": "public/assets/",
+  "html_path": "public/",
+  "assets_path": "public/assets/",
   "vendor_path": {
     "jquery": {
-      "src": "src/vendor/jquery/dist/jquery.js",
+      "src": "assets/vendor/jquery/dist/jquery.js",
       "dest": "assets/js/vendor/jquery.js"
     },
     "modernizr": {
-      "src": "src/vendor/modernizr/modernizr.js",
-      "dest": "assets/js/vendor/modernizr.js"
+      "src": "public/assets/vendor/modernizr/modernizr.js",
+      "dest": "public/assets/js/vendor/modernizr.js"
     }
   }
 }

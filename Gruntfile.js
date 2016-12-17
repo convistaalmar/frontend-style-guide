@@ -29,8 +29,8 @@ module.exports = function(grunt) {
           sourceMapRootpath: '<%= project.root_path %>'
         },
         files: {
-          '<%= project.assets_path %>css/styles.css':'<%= project.sources_path %>less/styles.less',
-          '<%= project.assets_path %>css/samples.css':'<%= project.sources_path %>less/samples.less'
+          '<%= project.dest_path %>css/styles.css':'<%= project.src_path %>less/styles.less',
+          '<%= project.dest_path %>css/samples.css':'<%= project.src_path %>less/samples.less'
         }
       }
     },
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         options: {
           map: true
         },
-        src: ['<%= project.assets_path %>css/styles.css', '<%= project.assets_path %>css/samples.css']
+        src: ['<%= project.dest_path %>css/styles.css', '<%= project.dest_path %>css/samples.css']
       }
     },
 
@@ -53,9 +53,9 @@ module.exports = function(grunt) {
     // Docs: https://github.com/gruntjs/grunt-contrib-csslint
     csslint: {
       options: {
-        csslintrc: '<%= project.sources_path %>less/.csslintrc'
+        csslintrc: '<%= project.src_path %>less/.csslintrc'
       },
-      src: ['<%= project.assets_path %>css/*.css']
+      src: ['<%= project.dest_path %>css/*.css']
     },
 
     // Concat JS
@@ -67,8 +67,8 @@ module.exports = function(grunt) {
           sourceMapStyle: 'inline'
         },
         files: {
-          '<%= project.assets_path %>js/plugins.js': '<%= project.sources_path %>scripts/plugins/**/*.js',
-          '<%= project.assets_path %>js/main.js': '<%= project.sources_path %>scripts/main/**/*.js'
+          '<%= project.dest_path %>js/plugins.js': '<%= project.src_path %>scripts/plugins/**/*.js',
+          '<%= project.dest_path %>js/main.js': '<%= project.src_path %>scripts/main/**/*.js'
         }
       }
     },
@@ -77,10 +77,10 @@ module.exports = function(grunt) {
     // Docs: https://github.com/gruntjs/grunt-contrib-jshint
     jshint: {
       options: {
-        jshintrc: '<%= project.sources_path %>scripts/.jshintrc'
+        jshintrc: '<%= project.src_path %>scripts/.jshintrc'
       },
-      beforeconcat: ['<%= project.sources_path %>scripts/plugins/**/*.js', '<%= project.sources_path %>scripts/main/**/*.js'],
-      afterconcat: ['<%= project.assets_path %>js/plugins.js', '<%= project.assets_path %>js/main.js']
+      beforeconcat: ['<%= project.src_path %>scripts/plugins/**/*.js', '<%= project.src_path %>scripts/main/**/*.js'],
+      afterconcat: ['<%= project.dest_path %>js/plugins.js', '<%= project.dest_path %>js/main.js']
     },
 
     // Create symbols definition
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
       },
         default: {
           files: {
-            '<%= project.assets_path %>svg/icons.svg': ['<%= project.sources_path %>icons/*.svg']
+            '<%= project.dest_path %>svg/icons.svg': ['<%= project.src_path %>icons/*.svg']
           },
         }
     },
@@ -122,45 +122,44 @@ module.exports = function(grunt) {
     htmlbuild: {
         options: {
           scripts: {
-            head: '<%= project.assets_path %>js/vendor/modernizr.js',
+            head: '<%= project.vendor_path.modernizr.dest %>',
             body: [
-              '<%= project.assets_path %>js/vendor/jquery.js',
-              '<%= project.assets_path %>js/plugins.js',
-              '<%= project.assets_path %>js/main.js'
+              '<%= project.vendor_path.jquery.dest %>',
+              '<%= project.dest_path %>js/plugins.js',
+              '<%= project.dest_path %>js/main.js'
             ]
           },
           sections: {
-            head: '<%= project.sources_path %>sections/head.html',
-            header: '<%= project.sources_path %>sections/header.html',
-            footer: '<%= project.sources_path %>sections/footer.html',
-            foot: '<%= project.sources_path %>sections/foot.html',
-            icons: '<%= project.assets_path %>svg/icons.svg',
-            plugins:'<%= project.sources_path %>sections/plugins.html'
+            head: '<%= project.src_path %>sections/head.html',
+            header: '<%= project.src_path %>sections/header.html',
+            footer: '<%= project.src_path %>sections/footer.html',
+            foot: '<%= project.src_path %>sections/foot.html',
+            icons: '<%= project.dest_path %>svg/icons.svg',
+            plugins:'<%= project.src_path %>sections/plugins.html'
           },
           data: {
             lang: '<%= project.lang %>',
             title: '<%= project.title %>',
-            assets_path: '<%= project.root_path %><%= project.assets_path %>',
-            content_path: '<%= project.root_path %><%= project.content_path %>'
+            assets_path: '<%= project.root_path %><%= project.assets_path %>'
           }
         },
       default: {
         options: {
           styles: {
-            styles: '<%= project.assets_path %>css/styles.css'
+            styles: '<%= project.dest_path %>css/styles.css'
           }
         },
-        src: '<%= project.sources_path %>pages/*.html',
+        src: '<%= project.src_path %>pages/*.html',
         dest: '<%= project.html_path %>',
       },
       samples: {
         options: {
           styles: {
-            styles: '<%= project.assets_path %>css/samples.css'
+            styles: '<%= project.dest_path %>css/samples.css'
           }
         },
-        src: '<%= project.sources_path %>samples/*.html',
-        dest: '<%= project.assets_path %>samples/',
+        src: '<%= project.src_path %>samples/*.html',
+        dest: '<%= project.html_path %>samples/',
       }
     },
 
@@ -176,31 +175,31 @@ module.exports = function(grunt) {
         tasks: ['copy:modernizr']
       },
       svg: {
-        files: ['<%= project.sources_path %>icons/*.svg'],
+        files: ['<%= project.src_path %>icons/*.svg'],
         tasks: ['svgstore']
       },
       html: {
-        files: ['<%= project.sources_path %>pages/*.html',
-                '<%= project.sources_path %>sections/*.html',
-                '<%= project.assets_path %>svg/*.svg'],
+        files: ['<%= project.src_path %>pages/*.html',
+                '<%= project.src_path %>sections/*.html',
+                '<%= project.dest_path %>svg/*.svg'],
         tasks: ['htmlbuild']
       },
       samples: {
-        files: ['<%= project.sources_path %>samples/*.html'],
+        files: ['<%= project.src_path %>samples/*.html'],
         tasks: ['htmlbuild:samples']
       },
       js: {
-        files: ['<%= project.sources_path %>scripts/plugins/*.js', 
-                '<%= project.sources_path %>scripts/main/*.js',
-                '<%= project.sources_path %>scripts/plugins/**/*.js', 
-                '<%= project.sources_path %>scripts/main/**/*.js'],
+        files: ['<%= project.src_path %>scripts/plugins/*.js', 
+                '<%= project.src_path %>scripts/main/*.js',
+                '<%= project.src_path %>scripts/plugins/**/*.js', 
+                '<%= project.src_path %>scripts/main/**/*.js'],
         tasks: ['concat']
       },
       // Process CSS with Less
       less: {
-        files: ['<%= project.sources_path %>less/*.less', 
-                '<%= project.sources_path %>less/**/*.less', 
-                '<%= project.sources_path %>less/**/**/*.less'], 
+        files: ['<%= project.src_path %>less/*.less', 
+                '<%= project.src_path %>less/**/*.less', 
+                '<%= project.src_path %>less/**/**/*.less'], 
         tasks: ['less']
       }
     }
@@ -218,6 +217,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('dev', ['svgstore', 'concat', 'less', 'htmlbuild']);
+  grunt.registerTask('vendor', ['copy']);
 
   grunt.registerTask('commit', ['svgstore', 'jshint:beforeconcat', 'concat', 'jshint:afterconcat', 'less', 'autoprefixer', 'csslint', 'htmlbuild']);
 
