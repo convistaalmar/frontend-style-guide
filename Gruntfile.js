@@ -183,12 +183,10 @@ module.exports = function(grunt) {
         files: ['<%= project.sources_path %>pages/*.html',
                 '<%= project.sources_path %>sections/*.html',
                 '<%= project.assets_path %>svg/*.svg'],
-        tasks: ['htmlbuild:default']
+        tasks: ['htmlbuild']
       },
       samples: {
-        files: ['<%= project.sources_path %>samples/*.html',
-                '<%= project.sources_path %>sections/*.html',
-                '<%= project.assets_path %>svg/*.svg'],
+        files: ['<%= project.sources_path %>samples/*.html'],
         tasks: ['htmlbuild:samples']
       },
       js: {
