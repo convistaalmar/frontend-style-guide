@@ -6,3 +6,4 @@
 /public/assets/svg/*.svg
 /public/*.html
 /public/assets/js/vendor/*.js
+*.map
