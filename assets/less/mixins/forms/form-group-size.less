@@ -1,0 +1,27 @@
+// Form group sizing
+//
+
+.form-group-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius; @form-control-class:form-control; @form-control-static-class:form-control-static) {
+  .@{form-control-class} {
+    height: @input-height;
+    padding: @padding-vertical @padding-horizontal;
+    font-size: @font-size;
+    line-height: @line-height;
+    border-radius: @border-radius-base;
+  }
+  select.@{form-control-class} {
+    height: @input-height;
+    line-height: @input-height;
+  }
+  textarea.@{form-control-class},
+  select[multiple].@{form-control-class} {
+    height: auto;
+  }
+  .@{form-control-static-class} {
+    height: @input-height;
+    min-height: (@line-height-computed + @font-size);
+    padding: (@padding-vertical + 1) @padding-horizontal;
+    font-size: @font-size;
+    line-height: @line-height;
+  }
+}

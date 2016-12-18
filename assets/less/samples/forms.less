@@ -4,9 +4,11 @@
 // 
 // Test using mixins from /base/mixins/forms/*.less
 // 
-// Heads up! Don't use this classes in your HTML.
-// Instead, name your classes according to the component
-// and the content of the elements.
+
+//** Large `.form-control` height
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+//** Small `.form-control` height
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 // Common form controls
 //
@@ -73,7 +75,7 @@
 // any desired values.
 .form-control-small {
   .form-control();
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 
 // Form control sizing
@@ -84,7 +86,7 @@
 // two last arguments.
 .form-group-small {
   .form-group();
-  .form-group-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small; form-control; form-control-static);
+  .form-group-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small; form-control; form-control-static);
 }
 
 // Help text

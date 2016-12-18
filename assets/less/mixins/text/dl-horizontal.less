@@ -1,0 +1,25 @@
+// Horizontal description lists
+//
+// Defaults to being stacked without any of the below styles applied, until the
+// grid breakpoint is reached (default of ~768px).
+
+.dl-horizontal(@dl-horizontal-breakpoint: @grid-float-breakpoint; @dl-horizontal-offset: 180px) {
+  dd {
+    .clearfix(); // Clear the floated `dt` if an empty `dd` is present
+  }
+
+  @media (min-width: @dl-horizontal-breakpoint) {
+    dt {
+      float: left;
+      width: (@dl-horizontal-offset - 20);
+      clear: left;
+      text-align: right;
+      .text-overflow();
+    }
+    dd {
+      margin-left: @dl-horizontal-offset;
+    }
+  }
+}
+
+
