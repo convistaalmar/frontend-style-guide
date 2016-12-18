@@ -212,7 +212,6 @@ module.exports = function(grunt) {
 
     // HTML minify
     // Docs: https://github.com/gruntjs/grunt-contrib-htmlmin
-    // TODO!
     htmlmin: {
       default: {
         options: {
@@ -234,6 +233,19 @@ module.exports = function(grunt) {
     // Watch tasks
     // Docs: https://www.npmjs.org/package/grunt-contrib-watch
     watch: {
+      less: {
+        files: ['<%= project.src_path %>less/*.less', 
+                '<%= project.src_path %>less/**/*.less', 
+                '<%= project.src_path %>less/**/**/*.less'], 
+        tasks: ['less']
+      },
+      javascript: {
+        files: ['<%= project.src_path %>scripts/plugins/*.js', 
+                '<%= project.src_path %>scripts/main/*.js',
+                '<%= project.src_path %>scripts/plugins/**/*.js', 
+                '<%= project.src_path %>scripts/main/**/*.js'],
+        tasks: ['concat']
+      },
       jquery: {
         files: ['<%= project.vendor_path.jquery.src %>'],
         tasks: ['copy:jquery']
@@ -250,25 +262,13 @@ module.exports = function(grunt) {
         files: ['<%= project.src_path %>pages/*.html',
                 '<%= project.src_path %>sections/*.html',
                 '<%= project.dest_path %>svg/*.svg'],
-        tasks: ['htmlbuild']
+        tasks: ['htmlbuild:default']
       },
       samples: {
-        files: ['<%= project.src_path %>samples/*.html'],
+        files: ['<%= project.src_path %>samples/*.html',
+                '<%= project.src_path %>sections/*.html',
+                '<%= project.dest_path %>svg/*.svg'],
         tasks: ['htmlbuild:samples']
-      },
-      js: {
-        files: ['<%= project.src_path %>scripts/plugins/*.js', 
-                '<%= project.src_path %>scripts/main/*.js',
-                '<%= project.src_path %>scripts/plugins/**/*.js', 
-                '<%= project.src_path %>scripts/main/**/*.js'],
-        tasks: ['concat']
-      },
-      // Process CSS with Less
-      less: {
-        files: ['<%= project.src_path %>less/*.less', 
-                '<%= project.src_path %>less/**/*.less', 
-                '<%= project.src_path %>less/**/**/*.less'], 
-        tasks: ['less']
       }
     },
 

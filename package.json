@@ -26,7 +26,6 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-html": "^8.1.0",
     "grunt-html-build": "^0.5.3",
-    "grunt-inline": "^0.3.6",
     "grunt-svgstore": "^1.0.0"
   }
 }

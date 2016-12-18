@@ -3,7 +3,7 @@
   "title": "Frontend Style Guide",
   // if the project is at the host root, 
   // leave only the trailing slash
-  "path": "/path_to_project/",
+  "root_path": "/path_to_project/",
   // these path are relative to project root, 
   // with trailing slash mandatory
   "src_path": "assets/",
@@ -12,12 +12,12 @@
   "assets_path": "public/assets/",
   "vendor_path": {
     "jquery": {
-      "src": "assets/vendor/jquery/dist/jquery.js",
-      "dest": "assets/js/vendor/jquery.js"
+      "src": "vendor/jquery/dist/",
+      "dest": "assets/js/vendor/"
     },
     "modernizr": {
-      "src": "public/assets/vendor/modernizr/modernizr.js",
-      "dest": "public/assets/js/vendor/modernizr.js"
+      "src": "vendor/modernizr/",
+      "dest": "public/assets/js/vendor/"
     }
   }
 }
