@@ -236,27 +236,6 @@ address {
 }
 
 
-// Container widths
-//
-// Set the container width, and override it for fixed navbars in media queries.
-
-.container {
-  .container-fixed();
-
-  // For fluid container, remove everithing from here
-
-  @media (min-width: @screen-sm-min) {
-    width: @container-sm;
-  }
-  @media (min-width: @screen-md-min) {
-    width: @container-md;
-  }
-  @media (min-width: @screen-lg-min) {
-    width: @container-lg;
-  }
-}
-
-
 //
 // Tables
 // --------------------------------------------------
