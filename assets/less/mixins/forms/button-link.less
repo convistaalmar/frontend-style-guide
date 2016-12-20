@@ -2,8 +2,8 @@
 // -------------------------
 
 // Make a button look and behave like a link
-.button-link() {
-  color: @brand-primary;
+.button-link(@button-link-color: @link-color) {
+  color: @button-link-color;
   font-weight: normal;
   border-radius: 0;
 
@@ -23,7 +23,7 @@
   }
   &:hover,
   &:focus {
-    color: darken(@brand-primary, 15%);
+    color: @link-hover-color;
     text-decoration: none;
     background-color: transparent;
   }
@@ -31,7 +31,7 @@
   fieldset[disabled] & {
     &:hover,
     &:focus {
-      color: @btn-link-disabled-color;
+      color: @gray-light;
       text-decoration: none;
     }
   }
