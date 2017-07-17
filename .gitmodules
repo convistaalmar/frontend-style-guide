@@ -10,3 +10,6 @@
 [submodule "src/vendor/jquery"]
 	path = vendor/jquery
 	url = https://github.com/jquery/jquery.git
+[submodule "vendor/select-css"]
+	path = vendor/select-css
+	url = https://github.com/filamentgroup/select-css.git

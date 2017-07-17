@@ -20,20 +20,20 @@
 // input[type="tel"]
 // input[type="color"]
 
-.form-control() {
+.form-control(@color; @background; @border-color; @font-size: @font-size-base; @font-weight: normal; @line-height: @line-height-base; @border-radius: @border-radius-base) {
   display: block;
   width: 100%;
-  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  height: ((@font-size * @line-height) + (@padding-base-vertical * 2 + 2));
   padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @font-size-base;
-  line-height: @line-height-base;
-  color: @gray;
-  background-color: #fff;
+  font-size: @font-size;
+  font-weight: @font-weight;
+  line-height: (@font-size * @line-height);
+  color: @color;
+  background-color: @background;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid #ccc;
-  border-radius: @border-radius-base; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+  border: 1px solid @border-color;
+  border-radius: @border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
   // Customize the `:focus` state to imitate native WebKit styles.
   .form-control-focus();
@@ -83,19 +83,7 @@
     input[type="time"],
     input[type="datetime-local"],
     input[type="month"] {
-      &.form-control {
-        line-height: @input-height-base;
-      }
-
-      &.input-sm,
-      .input-group-sm & {
-        line-height: @input-height-small;
-      }
-
-      &.input-lg,
-      .input-group-lg & {
-        line-height: @input-height-large;
-      }
+      line-height: @line-height;
     }
   }
 }

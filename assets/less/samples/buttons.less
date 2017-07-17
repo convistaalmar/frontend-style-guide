@@ -3,33 +3,33 @@
 // --------------------------------------------------
 
 .btn {
-  .button();
+  .button(#333; #fff; #fff);
 }
 
 // Alternate buttons
 // --------------------------------------------------
 
 .btn-default {
-  .button-variant(#333; #fff; #ccc);
+  .button-variant(#333; #fff);
 }
 .btn-primary {
-  .button-variant(#fff; @brand-primary; darken(@brand-primary, 5%));
+  .button-variant(#fff; @brand-primary);
 }
 // Success appears as green
 .btn-success {
-  .button-variant(#fff; @brand-success; darken(@brand-success, 5%));
+  .button-variant(#fff; @brand-success);
 }
 // Info appears as blue-green
 .btn-info {
-  .button-variant(#fff; @brand-info; darken(@brand-info, 5%));
+  .button-variant(#fff; @brand-info);
 }
 // Warning appears as orange
 .btn-warning {
-  .button-variant(#fff; @brand-warning; darken(@brand-warning, 5%));
+  .button-variant(#fff; @brand-warning);
 }
 // Danger and error appear as red
 .btn-danger {
-  .button-variant(#fff; @brand-danger; darken(@brand-danger, 5%));
+  .button-variant(#fff; @brand-danger);
 }
 
 
@@ -38,14 +38,14 @@
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  //.button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
 }
 .btn-sm {
   // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  //.button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 .btn-xs {
-  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  //.button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 
 
@@ -53,7 +53,7 @@
 // --------------------------------------------------
 
 .btn-block {
-  .button-block();
+  .button-block(#333; #fff; #fff);
 }
 
 // Link buttons
@@ -61,7 +61,7 @@
 
 // Make a button look and behave like a link
 .button-link {
-  .button-link();
+  .button-link(#333; #fff; #fff);
 }
 
 

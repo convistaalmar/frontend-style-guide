@@ -1,12 +1,13 @@
 // Block button
 // --------------------------------------------------
 
-.button-block(@button-block-class:btn-block) {
+.button-block(@color; @background; @border-color; @font-size: @font-size-base; @font-weight: normal; @line-height: @line-height-base; @border-radius: @border-radius-base) {
+  .button(@color; @background; @border-color; @font-size; @font-weight; @line-height; @border-radius);
   display: block;
   width: 100% !important; // specifity override
 
   // Vertically space out multiple block buttons
-  & + .@{button-block-class} {
+  & + & {
     margin-top: 5px;
   }
 

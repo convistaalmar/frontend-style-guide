@@ -2,10 +2,10 @@
 // Buttons base styles
 // --------------------------------------------------
 
-.button() {
+.button(@color; @background; @border-color; @font-size: @font-size-base; @font-weight: normal; @line-height: @line-height-base; @border-radius: @border-radius-base) {
   display: inline-block;
   margin-bottom: 0; // For input.btn
-  font-weight: normal;
+  font-weight: @font-weight;
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
@@ -13,7 +13,14 @@
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   white-space: nowrap;
-  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+  padding: @padding-base-vertical @padding-base-horizontal;
+  height: ((@font-size * @line-height) + (@padding-base-vertical * 2 + 2));
+  font-size: @font-size;
+  line-height: (@font-size * @line-height);
+  border-radius: @border-radius;
+  color: @color; 
+  background: @background; 
+  border-color: @border-color;
   .user-select(none);
 
   &,

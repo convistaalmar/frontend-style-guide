@@ -6,9 +6,9 @@
 // 
 
 //** Large `.form-control` height
-@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-large:             (ceil(@font-size-base * @line-height-base) + (@padding-base-vertical * 2) + 2);
 //** Small `.form-control` height
-@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-base * @line-height-base) + (@padding-base-vertical * 2) + 2);
 
 // Common form controls
 //
@@ -32,7 +32,7 @@
 // input[type="tel"]
 // input[type="color"]
 .form-control {
-  .form-control();
+  .form-control(@gray, #fff, #ccc);
 }
 
 // Form groups
@@ -75,7 +75,7 @@
 // any desired values.
 .form-control-small {
   .form-control();
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  //.input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
 
 // Form control sizing
@@ -86,7 +86,7 @@
 // two last arguments.
 .form-group-small {
   .form-group();
-  .form-group-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small; form-control; form-control-static);
+  //.form-group-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small; form-control; form-control-static);
 }
 
 // Help text
